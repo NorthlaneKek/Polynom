@@ -51,9 +51,27 @@ public:
 			tmp->pNext = pStop;
 			pFirst = pLast = tmp;
 		}
+		else 
+		{
+			tmp->pNext = pFirst;
+			pFirst = tmp;
+		}
 		len++;
 		pos++;
 	}
+	void InsLast(const T elem)  // вставить первый элемент
+	{
+		TLink <T> *tmp = new TLink <T>;
+		tmp->val = elem;
+		if (len != 0)
+		{
+			tmp->pNext = pStop;
+			tmp->pPred = pLast;
+		}
+		len++;
+		pos++;
+	}
+
 
 	void DelFirst()  // удалить первый элемент
 	{
@@ -72,7 +90,7 @@ public:
 		TLink <T> *tmp = new TLink <T>;
 		tmp->val = elem;
 		pPred->pNext = tmp;
-		tmp->pNext = pCurr
+		tmp->pNext = pCurr;
 			pCurr = tmp;
 		len++;
 	}
@@ -106,3 +124,64 @@ public:
 		return pCurr == pStop;
 	}
 };
+
+/*--------------------------------------------------------------
+
+struct TMonom {
+	double coeff;
+	int power;
+};
+
+
+
+class TPolynom: THeadList <TMonom>
+{
+public:
+	TPolynom()
+	{
+		pHead->val.coeff = 0;
+		pHead->val.power = -1;
+	}
+
+	void InsMonom(TMonom m)
+	{
+		TLink <TMonom> *tmp = new TLink <TMonom>;
+		tmp->val = m;
+		pPred->pNext = tmp;
+		tmp->pNext = pCurr;
+			pCurr = tmp;
+		len++;
+	}
+	TPolynom &operator+=( TPolynom &Q)
+	{
+		Reset();
+		Q.Reset();
+		while (pCurr->val.power != -1)
+		{
+			if (pCurr->val.power > Q.pCurr->pNext.power)
+				GoNext();
+			else 
+				if (pCurr->val.power < Q.pCurr->pNext.power)
+				{
+					InsCurr(Q.pCurr->val);
+					Q.GoNext();
+				}
+				else 
+				{
+					pCurr->val.coeff+=Q.pCurr->val.coeff;
+					if (pCurr->val.coeff == 0)
+						DelCurr();
+					else 
+						GoNext();
+					Q.GoNext();
+				}
+		}
+	}
+
+	TPolynom (TPolynom& Q)
+	{
+		pHead->val.power = -1;
+		for (Q.Reset(); !Q.IsEnd(); Q.GoNext())
+			InsLast(Q.pCurr->val);
+	}
+};*/ 

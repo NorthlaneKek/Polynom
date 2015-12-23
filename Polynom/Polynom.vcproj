@@ -212,6 +212,10 @@
 				RelativePath=".\TLHLP.h"
 				>
 			</File>
+			<File
+				RelativePath=".\TPolynom.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Файлы ресурсов"
