@@ -100,7 +100,7 @@ public:
 		{
 			for (p.Reset(); !p.IsEnd();p.GoNext())
 			{
-				out<<p.pCurr->val.coeff;
+				out<<p.pCurr->val.coeff<<"*";
 				if (p.pCurr->val.power /100 > 0)
 					cout<<"x^"<<p.pCurr->val.power/100;
 				if ((p.pCurr->val.power / 10)%10>0)
@@ -108,7 +108,7 @@ public:
 				if (p.pCurr->val.power%10 > 0)
 					cout<<"z^"<<p.pCurr->val.power %10;
 				if (p.pCurr->pNext!=p.pStop && p.pCurr->pNext->val.coeff > 0)
-					out<<"+";
+					out<<" + ";
 			}
 		}
 		else
