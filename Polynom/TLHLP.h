@@ -63,10 +63,17 @@ public:
 	{
 		TLink <T> *tmp = new TLink <T>;
 		tmp->val = elem;
-		if (len != 0)
+		if (len == 0)
 		{
+			pHead->pNext = tmp;
 			tmp->pNext = pStop;
-			tmp->pPred = pLast;
+			pFirst = pLast = tmp;
+		}
+		else
+		{
+			pLast->pNext = tmp;
+			tmp->pNext = pStop;
+			pLast = tmp;
 		}
 		len++;
 		pos++;
@@ -87,12 +94,17 @@ public:
 
 	void InsCurr(const T elem) // вставить элемент в текущую позицию
 	{
+		if (pCurr == pFirst)
+			InsFirst(elem);
+		else
+		{
 		TLink <T> *tmp = new TLink <T>;
 		tmp->val = elem;
 		pPred->pNext = tmp;
 		tmp->pNext = pCurr;
 			pCurr = tmp;
 		len++;
+		}
 	}
 
 	void DelCurr() // удалить текущий элемент
