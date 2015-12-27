@@ -70,7 +70,33 @@ for (;;)
 			cout<<polinom;
 			break;
 		} 
-	case 3: 
+	case 3:
+		{
+			int mas2[][2] = { NULL }; 
+			cout<<"¬ведите размер полинома: "; 
+			cin>>size;
+			for (int i = 0; i<size; i++)
+			{
+				cout<<endl<< "¬ведите коэффициент: "; 
+				cin>>mas2[i][0]; 
+				cout<<"¬ведите степень х: "; 
+				cin>>StepOfVariable; 
+				step = StepOfVariable * 100; 
+				cout<<"¬ведите степень y: "; 
+				cin>>StepOfVariable; 
+				step += StepOfVariable * 10; 
+				cout<<"¬ведите степень z: "; 
+				cin>>StepOfVariable; 
+				step += StepOfVariable; 
+				mas2[i][1] = step;
+			} 
+			TPolynom polinom2(mas2, size);
+			polinom+=polinom2;
+			cout<<polinom;
+		}
+
+
+	case 4: 
 		exit(1); 
 	default:
 		break; 
